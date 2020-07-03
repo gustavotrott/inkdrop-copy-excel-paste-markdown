@@ -28,5 +28,5 @@
     "build": "babel src/ -d lib/",
     "dev": "babel src/ -s -d lib/ --watch"
   },
-  "version": "0.0.1"
+  "version": "0.1.0"
 }
