@@ -1,0 +1,32 @@
+{
+  "description": "Paste Markdown automatically converted from HTML copied on a browser",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.1",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.4"
+  },
+  "engines": {
+    "inkdrop": "^4.x"
+  },
+  "homepage": "https://github.com/gustavotrott/inkdrop-copy-excel-paste-markdown/#readme",
+  "keywords": [
+    "excel",
+    "markdown",
+    "to-markdown"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "name": "paste-excel-as-markdown",
+  "repository": "https://github.com/gustavotrott/inkdrop-copy-excel-paste-markdown/",
+  "scripts": {
+    "build": "babel src/ -d lib/",
+    "dev": "babel src/ -s -d lib/ --watch"
+  },
+  "version": "0.0.1"
+}

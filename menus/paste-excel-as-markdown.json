@@ -1,0 +1,13 @@
+{
+  "menu": [
+    {
+      "label": "Plugins",
+      "submenu": [
+        {
+          "label": "Paste Excel as Markdown",
+          "command": "paste-excel-as-markdown"
+        }
+      ]
+    }
+  ]
+}
