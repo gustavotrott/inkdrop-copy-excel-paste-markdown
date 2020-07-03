@@ -1,6 +1,6 @@
 # copy-excel-paste-markdown plugin for Inkdrop
 
-It enables you to copy selected rows and columns in Excel and paste as Markdown Table in Inkdrop.
+It enables you to copy selected cells in Excel and paste as markdown table in Inkdrop.
 
 ## Install
 
@@ -11,8 +11,8 @@ ipm install copy-excel-paste-markdown
 ## Usage
 
 Select *"Plugins" → "Paste Excel as Markdown"* from menu to run this plugin's command `paste-excel-as-markdown`.
-It converts copied Excel rows and columns into Markdown Table and paste it into the editor.
-For example, when you copy below HTML on your browser:
+It converts copied cells from Excel into Markdown table and paste it into the editor.
+For example, when you copy below cells:
 
 
 ![image](https://user-images.githubusercontent.com/5660191/86498023-69536200-bd5a-11ea-970b-61575385422d.png)
