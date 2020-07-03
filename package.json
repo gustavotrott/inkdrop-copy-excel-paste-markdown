@@ -1,5 +1,5 @@
 {
-  "description": "Paste Markdown automatically converted from HTML copied on a browser",
+  "description": "Paste Markdown Table automatically converted from Excel copied rows and columns",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
