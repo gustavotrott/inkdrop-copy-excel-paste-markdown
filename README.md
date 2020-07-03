@@ -35,6 +35,7 @@ It will be pasted in Editor as:
 ```
 
 It will be viewed in preview mode as:
+
 ![image](https://user-images.githubusercontent.com/5660191/86497485-3a3bf100-bd58-11ea-934a-da2a1e0a272c.png)
 
 ## Fork of copy-excel-paste-markdown and inkdrop-paste-as-markdown

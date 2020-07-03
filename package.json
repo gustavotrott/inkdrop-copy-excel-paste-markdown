@@ -22,7 +22,7 @@
   ],
   "license": "MIT",
   "main": "./lib/index.js",
-  "name": "paste-excel-as-markdown",
+  "name": "copy-excel-paste-markdown",
   "repository": "https://github.com/gustavotrott/inkdrop-copy-excel-paste-markdown/",
   "scripts": {
     "build": "babel src/ -d lib/",
