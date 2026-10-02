@@ -1,4 +1,12 @@
 {
+  "context-menu": {
+    ".CodeMirror": [
+      {
+        "label": "Paste Excel",
+        "command": "paste-excel-as-markdown"
+      }
+    ]
+  },
   "menu": [
     {
       "label": "Plugins",
