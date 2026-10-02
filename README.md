@@ -8,10 +8,26 @@ It enables you to copy selected cells in Excel and paste as markdown table in In
 ipm install copy-excel-paste-markdown
 ```
 
+Or search for `copy-excel-paste-markdown` in *Preferences → Plugins*.
+
 ## Usage
 
-Select *"Plugins" → "Paste Excel as Markdown"* from menu to run this plugin's command `paste-excel-as-markdown`.
-It converts copied cells from Excel into Markdown table and paste it into the editor.
+Select *"Plugins" → "Paste Excel as Markdown"* from the menu, or right-click in the editor and choose *"Paste Excel as Markdown"*, to run this plugin's command `paste-excel-as-markdown`.
+It converts copied cells from Excel (or Google Sheets, Numbers, etc.) into a Markdown table and pastes it into the editor.
+
+Supports Inkdrop v4, v5 and v6.
+
+Cells containing `|` are escaped and line breaks inside a cell are converted to `<br>`.
+
+You can also bind the command to a shortcut in your `keymap.json` (`keymap.cson` on Inkdrop v5 and earlier):
+
+```json
+{
+  ".CodeMirror": {
+    "cmd-alt-v": "paste-excel-as-markdown"
+  }
+}
+```
 
 For example, 
 
@@ -49,3 +65,13 @@ cat	18lb	calico
 ## Fork of copy-excel-paste-markdown and inkdrop-paste-as-markdown
 
 This plugin was based on [jonmagic/copy-excel-paste-markdown](https://github.com/jonmagic/copy-excel-paste-markdown) and [inkdropapp/inkdrop-paste-as-markdown](https://github.com/inkdropapp/inkdrop-paste-as-markdown) plugin.
+## Development
+
+```sh
+npm install
+npm run build   # compile src/ to lib/
+npm test        # build and run the table conversion tests
+ipm link        # symlink into Inkdrop for local testing
+```
+
+To release: `npm version <patch|minor|major>`, push with tags, then `ipm publish` (requires [`@inkdropapp/ipm-cli`](https://www.npmjs.com/package/@inkdropapp/ipm-cli) and `ipm configure`).

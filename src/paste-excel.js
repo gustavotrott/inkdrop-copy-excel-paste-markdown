@@ -1,43 +1,26 @@
 import { clipboard } from 'electron'
+import { tsvToMarkdownTable } from './table'
 
-function columnWidth(rows, columnIndex) {
-  return Math.max.apply(null, rows.map(function(row) {
-    return typeof row[columnIndex] != 'undefined' ? row[columnIndex].length : 0;
-  }))
+function replaceSelection(editor, text) {
+  if (editor.cm) {
+    // Inkdrop v4/v5: CodeMirror 5 instance
+    editor.cm.replaceSelection(text)
+  } else {
+    // Inkdrop v6+: the active editor is a CodeMirror 6 EditorView
+    editor.dispatch(editor.state.replaceSelection(text), {
+      userEvent: 'input.paste',
+      scrollIntoView: true
+    })
+  }
 }
 
 export function pasteExcel() {
-  const data = clipboard.readText().trim()
-  var rows = data.split((/[\n\u0085\u2028\u2029]|\r\n?/g)).map(function(row) {
-    return row.split("\t")
-  })
-  var columnWidths = rows[0].map(function(column, columnIndex) {
-    return columnWidth(rows, columnIndex)
-  })
-  var markdownRows = rows.map(function(row, rowIndex) {
-    // | Name         | Title | Email Address  |
-    // |--------------|-------|----------------|
-    // | Jane Atler   | CEO   | jane@acme.com  |
-    // | John Doherty | CTO   | john@acme.com  |
-    // | Sally Smith  | CFO   | sally@acme.com |
-    return "| " + row.map(function(column, index) {
-      return column + Array(columnWidths[index] - column.length + 1).join(" ")
-    }).join(" | ") + " |"
-    row.map
+  const editor = inkdrop.getActiveEditor()
+  if (!editor) return false
 
-  })
-  markdownRows.splice(1, 0, "|" + columnWidths.map(function(width, index) {
-    return Array(columnWidths[index] + 3).join("-")
-  }).join("|") + "|")
+  const md = tsvToMarkdownTable(clipboard.readText())
+  if (md === null) return false
 
-  // https://www.w3.org/TR/clipboard-apis/#the-paste-action
-  // When pasting, the drag data store mode flag is read-only, hence calling
-  // setData() from a paste event handler will not modify the data that is
-  // inserted, and not modify the data on the clipboard.
-
-  const md = markdownRows.join("\n")
-
-  const { cm } = inkdrop.getActiveEditor()
-  cm.replaceSelection(md)
+  replaceSelection(editor, md)
   return true
 }
